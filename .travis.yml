@@ -4,8 +4,8 @@ sudo: required
 env:
   - distro: geerlingguy
     release: docker-ubuntu1404-ansible
-    init: /lib/systemd/systemd
-    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    init: /sbin/init
+    run_opts: ""
   - distro: geerlingguy
     release: docker-ubuntu1604-ansible
     init: /lib/systemd/systemd
