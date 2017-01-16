@@ -9,6 +9,7 @@ pandora_key_decrypt: 'R=U!LH$O2B#'
 pandora_partner: 'android-generic'
 spotify_username: narfman0
 spotify_password: TODO
+spotify_enabled: false
 
 mopidy_packages:
   - mopidy-spotify
@@ -20,6 +21,7 @@ mopidy_pip:
 mopidy_settings:
   - { section: 'spotify', option: 'username', value: '{{ spotify_username }}' }
   - { section: 'spotify', option: 'password', value: '{{ spotify_password }}' }
+  - { section: 'spotify', option: 'enabled', value: '{{ spotify_enabled }}' }
   - { section: 'pandora', option: 'username', value: '{{ pandora_username }}' }
   - { section: 'pandora', option: 'password', value: '{{ pandora_password }}' }
   - { section: 'pandora', option: 'enabled', value: '{{ pandora_enabled }}' }

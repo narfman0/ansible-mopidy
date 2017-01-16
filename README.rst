@@ -16,7 +16,7 @@ Daniel White for the inspiration :)
 Role Variables
 --------------
 
-Available variables are listed below, along with default values (see `vars/main.yml`)
+Available variables are listed below, along with default values (see `defaults/main.yml`)
 
 A list of package manager extensions::
 
@@ -36,7 +36,7 @@ to be defined. These are used by the ini_file_ module to configure `/etc/mopidy/
       - { section: 'spotify', option: 'password', value: '{{ spotify_password }}' }
       - { section: 'pandora', option: 'username', value: '{{ pandora_username }}' }
       - { section: 'pandora', option: 'password', value: '{{ pandora_password }}' }
-      ... <snip, please see vars/main.yml file :)
+      ... <snip, please see defaults/main.yml file :)
 
 .. _ini_file: http://docs.ansible.com/ansible/ini_file_module.html
 
