@@ -1,0 +1,10 @@
+---
+
+mopidy_packages:
+  - mopidy-spotify
+  - mopidy-pandora
+
+mopidy_pip: []
+
+# 'ini_file' module settings for mopidy.conf
+mopidy_settings: []

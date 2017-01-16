@@ -1,0 +1,23 @@
+---
+- name: Download pip
+  get_url:
+    url: https://bootstrap.pypa.io/get-pip.py
+    dest: /root/get-pip.py
+
+- name: Check if pip installed
+  stat:
+    path: "/usr/local/bin/pip"
+  register: stat_result
+
+- name: Install recent pip
+  shell: python get-pip.py
+  args:
+    chdir: /root
+  when: stat_result.stat.exists == False
+
+- name: Install external extensions
+  pip:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ mopidy_pip }}"
+  notify: restart mopidy

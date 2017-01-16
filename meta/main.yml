@@ -1,0 +1,22 @@
+---
+
+dependencies: []
+
+galaxy_info:
+  author: Jon Robison
+  description: Mopidy ansible role
+
+  license: MIT
+
+  min_ansible_version: 1.9
+
+  platforms:
+    - name: Debian
+      versions:
+        - jessie
+    - name: Ubuntu
+      versions:
+        - trusty
+        - xenial
+
+  galaxy_tags: ['mopidy']

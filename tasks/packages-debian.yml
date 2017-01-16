@@ -1,0 +1,23 @@
+---
+
+- name: Trust mopidy developer GPG key
+  apt_key:
+    url: https://apt.mopidy.com/mopidy.gpg
+    state: present
+
+- name: Ensure mopidy repository is available
+  apt_repository:
+    repo: deb http://apt.mopidy.com/ stable main contrib non-free
+    state: present
+
+- name: Ensure mopidy is installed
+  apt:
+    name: mopidy
+    state: present
+
+- name: Install mopidy packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ mopidy_packages }}"
+  notify: restart mopidy

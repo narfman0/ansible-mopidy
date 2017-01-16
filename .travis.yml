@@ -1,0 +1,42 @@
+---
+sudo: required
+
+env:
+  - distro: geerlingguy
+    release: docker-ubuntu1404-ansible
+    init: /lib/systemd/systemd
+    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - distro: geerlingguy
+    release: docker-ubuntu1604-ansible
+    init: /lib/systemd/systemd
+    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - distro: geerlingguy
+    release: docker-debian8-ansible
+    init: /lib/systemd/systemd
+    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+
+# Tell Travis to start Docker when it brings up an environment.
+services:
+  - docker
+
+before_install:
+  - 'docker pull ${distro}/${release}:latest'
+
+script:
+  - container_id=$(mktemp)
+  - 'docker run --detach --volume="${PWD}":/etc/ansible/roles/role_under_test:ro ${run_opts} ${distro}/${release}:latest "${init}" > "${container_id}"'
+  # Syntax
+  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml --syntax-check'
+  # Test role.
+  - 'docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml'
+  # Test role idempotence.
+  - idempotence=$(mktemp)
+  - docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml | tee -a ${idempotence}
+  - >
+    tail ${idempotence}
+    | grep -q 'changed=0.*failed=0'
+    && (echo 'Idempotence test: pass' && exit 0)
+    || (echo 'Idempotence test: fail' && exit 1)
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
