@@ -1,0 +1,29 @@
+---
+
+pandora_username: narfman0
+pandora_password: TODO
+pandora_enabled: false
+pandora_api_host: tuner.pandora.com/services/json/
+pandora_key_encrypt: '6#26FRL$ZWD'
+pandora_key_decrypt: 'R=U!LH$O2B#'
+pandora_partner: 'android-generic'
+spotify_username: narfman0
+spotify_password: TODO
+
+mopidy_packages:
+  - mopidy-spotify
+
+mopidy_pip:
+  - mopidy-pandora
+
+# 'ini_file' module settings for mopidy.conf
+mopidy_settings:
+  - { section: 'spotify', option: 'username', value: '{{ spotify_username }}' }
+  - { section: 'spotify', option: 'password', value: '{{ spotify_password }}' }
+  - { section: 'pandora', option: 'username', value: '{{ pandora_username }}' }
+  - { section: 'pandora', option: 'password', value: '{{ pandora_password }}' }
+  - { section: 'pandora', option: 'enabled', value: '{{ pandora_enabled }}' }
+  - { section: 'pandora', option: 'api_host', value: '{{ pandora_api_host }}' }
+  - { section: 'pandora', option: 'partner_encryption_key ', value: '{{ pandora_key_encrypt }}' }
+  - { section: 'pandora', option: 'partner_decryption_key ', value: '{{ pandora_key_decrypt }}' }
+  - { section: 'pandora', option: 'partner_device ', value: 'android-generic' }

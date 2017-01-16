@@ -3,10 +3,9 @@
 
 Vagrant.configure("2") do |config|
   config.vm.box = "debian/jessie64"
-  config.vm.hostname = "ansible"
-  config.vm.network :private_network, ip: "192.168.33.55"
+  config.vm.hostname = "mopidy"
   config.nfs.functional = false
-  config.vm.define :ansible do |ansible|
+  config.vm.define :mopidy do |mopidy|
   end
 
   config.vm.provider :virtualbox do |vb|

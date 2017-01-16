@@ -10,6 +10,10 @@
     repo: deb http://apt.mopidy.com/ stable main contrib non-free
     state: present
 
+- name: Update apt cache
+  apt: update_cache=yes
+  changed_when: False
+
 - name: Ensure mopidy is installed
   apt:
     name: mopidy

@@ -16,22 +16,27 @@ Daniel White for the inspiration :)
 Role Variables
 --------------
 
-Available variables are listed below, along with default values (see `defaults/main.yml`)
+Available variables are listed below, along with default values (see `vars/main.yml`)
 
 A list of package manager extensions::
 
     mopidy_packages:
       - mopidy-spotify
-      - mopidy-pandora
 
 A list of pip extensions::
 
-    mopidy_pip: []
+    mopidy_pip:
+      - mopidy-pandora
 
 A list of additional options to configure. Each item requires the `section`, `option` and `value` properties
 to be defined. These are used by the ini_file_ module to configure `/etc/mopidy/mopidy.conf`::
 
-    mopidy_settings: []
+    mopidy_settings:
+      - { section: 'spotify', option: 'username', value: '{{ spotify_username }}' }
+      - { section: 'spotify', option: 'password', value: '{{ spotify_password }}' }
+      - { section: 'pandora', option: 'username', value: '{{ pandora_username }}' }
+      - { section: 'pandora', option: 'password', value: '{{ pandora_password }}' }
+      ... <snip, please see vars/main.yml file :)
 
 .. _ini_file: http://docs.ansible.com/ansible/ini_file_module.html
 

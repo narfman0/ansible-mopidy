@@ -1,0 +1,16 @@
+---
+
+- name: Update apt cache
+  apt: update_cache=yes
+  changed_when: False
+
+- name: Install packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - apt-transport-https
+    - autoconf
+    - gcc
+    - python-dev
+  notify: restart mopidy
