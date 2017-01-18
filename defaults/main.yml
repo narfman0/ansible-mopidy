@@ -1,6 +1,7 @@
 ---
 
 mopidy_password: ''
+mopidy_hostname: '0.0.0.0'
 pandora_username: narfman0
 pandora_password: ''
 pandora_enabled: false
@@ -22,6 +23,7 @@ mopidy_pip:
 # 'ini_file' module settings for mopidy.conf
 mopidy_settings:
   - { section: 'mpd', option: 'password', value: '{{ mopidy_password }}' }
+  - { section: 'mpd', option: 'hostname', value: '{{ mopidy_hostname }}' }
   - { section: 'spotify', option: 'username', value: '{{ spotify_username }}' }
   - { section: 'spotify', option: 'password', value: '{{ spotify_password }}' }
   - { section: 'spotify', option: 'enabled', value: '{{ spotify_enabled }}' }
