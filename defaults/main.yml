@@ -2,6 +2,7 @@
 
 mopidy_password: ''
 mopidy_hostname: '0.0.0.0'
+mopidy_media_dir: '/var/lib/mopidy/local'
 pandora_username: narfman0
 pandora_password: ''
 pandora_enabled: false
@@ -24,6 +25,7 @@ mopidy_pip:
 mopidy_settings:
   - { section: 'mpd', option: 'password', value: '{{ mopidy_password }}' }
   - { section: 'mpd', option: 'hostname', value: '{{ mopidy_hostname }}' }
+  - { section: 'local', option: 'media_dir', value: '{{ mopidy_media_dir }}' }
   - { section: 'spotify', option: 'username', value: '{{ spotify_username }}' }
   - { section: 'spotify', option: 'password', value: '{{ spotify_password }}' }
   - { section: 'spotify', option: 'enabled', value: '{{ spotify_enabled }}' }
