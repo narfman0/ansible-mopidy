@@ -2,6 +2,7 @@
 - hosts: mopidy
   become: True
   become_method: 'sudo'
+  gather_facts: False
   vars_files:
     - defaults/main.yml
   tasks:
