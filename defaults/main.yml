@@ -3,6 +3,7 @@
 mopidy_password: ''
 mopidy_hostname: '0.0.0.0'
 mopidy_media_dir: '/var/lib/mopidy/local'
+mopidy_local_scan: daily
 pandora_username: narfman0
 pandora_password: ''
 pandora_enabled: false
