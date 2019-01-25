@@ -21,9 +21,8 @@
 
 - name: Install mopidy packages
   apt:
-    name: "{{ item }}"
+    name: "{{ mopidy_packages }}"
     state: present
-  with_items: "{{ mopidy_packages }}"
   notify: restart mopidy
 
 - name: Install gstreamer plugin(s)

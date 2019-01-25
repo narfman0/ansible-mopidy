@@ -7,10 +7,9 @@
 - name: Install packages
   apt:
     name: "{{ item }}"
+      - apt-transport-https
+      - autoconf
+      - gcc
+      - python-dev
     state: present
-  with_items:
-    - apt-transport-https
-    - autoconf
-    - gcc
-    - python-dev
   notify: restart mopidy
